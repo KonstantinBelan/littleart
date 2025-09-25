@@ -1195,11 +1195,12 @@ button.btn {
 @media (max-width: 920px) {
   .component__tooltip {
     display: none;
+    max-width: 15.625rem !important;
   }
   .component__tooltip.active {
     display: flex;
     inset: 50% auto auto 50% !important;
-    transform: translate(-50%, -50%) scale(1.2);
+    transform: translate(-50%, -50%) scale(1.4);
   }
 }
 .component__tooltip:after {
@@ -1277,8 +1278,16 @@ button.btn {
   letter-spacing: -0.04em;
   line-height: 1;
   position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
   word-spacing: 100vw;
   z-index: 1;
+}
+@media (max-width: 640px) {
+  .component__tooltip span {
+    word-spacing: normal;
+  }
 }
 .component__tooltip span:after {
   background: url(data:image/jpeg;base64,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)
@@ -1286,11 +1295,21 @@ button.btn {
   background-size: cover;
   content: '';
   height: 1.8125rem;
+  pointer-events: none;
   position: absolute;
   right: 0.625rem;
   top: 0.625rem;
   width: 1.375rem;
   z-index: -1;
+}
+@media (max-width: 640px) {
+  .component__tooltip span:after {
+    bottom: auto !important;
+    left: auto !important;
+    right: -0.25rem !important;
+    top: -0.25rem !important;
+    transform: scale(0.8) !important;
+  }
 }
 .component__tooltip p {
   font-size: clamp(10px, 0.4929577465rem + 0.5633802817vw, 16px);
@@ -1585,7 +1604,7 @@ button.btn {
 }
 @media (max-width: 640px) {
   .reviews .section__description {
-    max-width: 18.125rem !important;
+    max-width: 17.5rem !important;
   }
 }
 .reviews:after {
@@ -1931,6 +1950,7 @@ button.btn {
   .footer .container {
     display: grid;
     grid-template-columns: 1fr 10rem;
+    justify-items: flex-start;
     padding-bottom: 3.125rem;
     row-gap: 2.5rem;
   }
@@ -1944,7 +1964,6 @@ button.btn {
   .footer__logo {
     display: block;
     height: 1.375rem;
-    margin-right: auto;
     order: 1;
     width: auto;
   }
