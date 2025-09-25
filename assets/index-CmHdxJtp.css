@@ -366,6 +366,8 @@ button.btn {
 @media (max-width: 640px) {
   .header__buttons {
     margin-left: auto;
+    max-width: 9.375rem;
+    width: 100%;
   }
 }
 .header__socials {
@@ -386,6 +388,12 @@ button.btn {
 }
 .header__socials-link:hover {
   transform: scale(1.02) translateY(-1px);
+}
+@media (max-width: 640px) {
+  .header__cta,
+  .header__cta .btn {
+    width: 100%;
+  }
 }
 .header__menu {
   margin-right: auto;
@@ -2087,6 +2095,115 @@ button.btn {
     color: #ff728f;
   }
 }
+.modal {
+  align-items: center;
+  -webkit-backdrop-filter: blur(0.625rem);
+  backdrop-filter: blur(0.625rem);
+  background: #0009;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+  visibility: hidden;
+  width: 100%;
+  z-index: -9999;
+}
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 100;
+}
+.modal__wrapper {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  padding: clamp(20px, 0.8098591549rem + 1.8779342723vw, 40px);
+  width: 100%;
+}
+@media screen and (min-width: 1440px) {
+  .modal__wrapper {
+    transform: scale(1.15);
+    transform-origin: center;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .modal__wrapper {
+    transform: scale(1.2);
+    transform-origin: center;
+  }
+}
+@media screen and (min-width: 2560px) {
+  .modal__wrapper {
+    transform: scale(1.5);
+    transform-origin: center;
+  }
+}
+@media screen and (min-width: 3840px) {
+  .modal__wrapper {
+    transform: scale(2);
+    transform-origin: center;
+  }
+}
+.modal__content {
+  position: relative;
+  z-index: 1;
+}
+.modal__content,
+.modal__video {
+  aspect-ratio: 16/9;
+  background: #fff;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 20px #0000001a;
+  max-width: 45rem;
+  width: 100%;
+}
+.modal__video {
+  overflow: hidden;
+}
+.modal__video iframe {
+  border: none;
+  height: 100%;
+  width: 100%;
+}
+.modal__close {
+  border-radius: 100%;
+  cursor: pointer;
+  height: 1.625rem;
+  position: absolute;
+  right: clamp(-22px, -1.198943662rem + -0.7511737089vw, -30px);
+  top: clamp(-22px, -1.198943662rem + -0.7511737089vw, -30px);
+  transition: background 0.15s ease-in-out;
+  width: 1.625rem;
+  z-index: 10;
+}
+.modal__close span {
+  background: #fff;
+  border-radius: 0.625rem;
+  height: 0.125rem;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform-origin: center;
+  transition: opacity 0.3s ease-in-out;
+  width: 100%;
+}
+.modal__close span:first-child {
+  transform: translate(-50%, -50%) rotate(45deg) scale(0.8);
+}
+.modal__close span:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg) scale(0.8);
+}
+.modal__close:hover span {
+  opacity: 0.5;
+}
 * {
   box-sizing: border-box;
 }
@@ -2096,8 +2213,12 @@ button.btn {
     overflow-x: hidden;
   }
 }
+body.fixed,
+html.fixed {
+  overflow: hidden;
+}
 @media screen and (min-width: 1440px) {
-  body {
+  .scale-container {
     height: 86.956%;
     transform: scale(1.15);
     transform-origin: top left;
@@ -2105,7 +2226,7 @@ button.btn {
   }
 }
 @media screen and (min-width: 1920px) {
-  body {
+  .scale-container {
     height: 83.333%;
     transform: scale(1.2);
     transform-origin: top left;
@@ -2113,7 +2234,7 @@ button.btn {
   }
 }
 @media screen and (min-width: 2560px) {
-  body {
+  .scale-container {
     height: 66.666%;
     transform: scale(1.5);
     transform-origin: top left;
@@ -2121,7 +2242,7 @@ button.btn {
   }
 }
 @media screen and (min-width: 3840px) {
-  body {
+  .scale-container {
     height: 50%;
     transform: scale(2);
     transform-origin: top left;
