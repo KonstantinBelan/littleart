@@ -2531,12 +2531,12 @@ button.btn {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  height: 70vh;
+  height: 75vh;
   padding: 1.25rem;
   position: fixed;
   right: 0.625rem;
   top: 0.625rem;
-  width: 90vw;
+  width: 80vw;
   z-index: 99999;
 }
 .mobile__menu-header {
