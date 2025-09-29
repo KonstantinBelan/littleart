@@ -309,7 +309,7 @@ function createStickyPlatforms() {
   const gridBottom = gridTop + gridRect.height;
   const platformsTop = platformsRect.top + scrollY;
   const stickStart = platformsTop / scale;
-  const stickEnd = gridBottom - platformsRect.height / scale;
+  const stickEnd = gridBottom - platformsRect.height;
   console.log("Границы:", { stickStart, stickEnd, gridBottom });
   function update() {
     const scrollY2 = window.pageYOffset;
@@ -323,17 +323,7 @@ function createStickyPlatforms() {
     } else {
       translateY = scrollY2 - stickStart;
     }
-    let scaleNew = 1;
-    if (scale == 1.15) {
-      scaleNew = 2;
-    } else if (scale == 1.2) {
-      scaleNew = 2.5;
-    } else if (scale == 1.5) {
-      scaleNew = 1.7;
-    } else if (scale == 2) {
-      scaleNew = 3.5;
-    }
-    const maxTranslate = gridRect2.height - platformsRect.height * scaleNew - (platformsTop - gridTop);
+    const maxTranslate = gridRect2.height - platformsRect.height - (platformsTop - gridTop);
     const maxTranslate2 = gridRect2.height - platformsRect.height - (platformsTop - gridTop);
     console.log("maxTranslate:", {
       maxTranslate,
@@ -352,23 +342,25 @@ function createStickyPlatforms() {
   return { update };
 }
 document.addEventListener("DOMContentLoaded", function() {
-  const controller = createStickyPlatforms();
-  if (controller) {
-    window.addEventListener(
-      "scroll",
-      () => {
-        requestAnimationFrame(controller.update);
-      },
-      { passive: true }
-    );
-    window.addEventListener("resize", () => {
-      const platforms = document.querySelector(".shop__platforms");
-      const wrapper = document.querySelector(".shop__wrapper");
-      const width = wrapper.getBoundingClientRect().width;
-      platforms.style.width = width + "px";
+  setTimeout(() => {
+    const controller = createStickyPlatforms();
+    if (controller) {
+      window.addEventListener(
+        "scroll",
+        () => {
+          requestAnimationFrame(controller.update);
+        },
+        { passive: true }
+      );
+      window.addEventListener("resize", () => {
+        const platforms = document.querySelector(".shop__platforms");
+        const wrapper = document.querySelector(".shop__wrapper");
+        const width = wrapper.getBoundingClientRect().width;
+        platforms.style.width = width + "px";
+        setTimeout(controller.update, 100);
+      });
       setTimeout(controller.update, 100);
-    });
-    setTimeout(controller.update, 100);
-  }
+    }
+  }, 100);
 });
 console.log("Приложение запущено!");
