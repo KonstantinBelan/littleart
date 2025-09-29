@@ -2531,7 +2531,7 @@ button.btn {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  height: 75vh;
+  height: 75.05vh;
   padding: 1.25rem;
   position: fixed;
   right: 0.625rem;
