@@ -743,6 +743,8 @@ button.btn {
   height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
+  -o-object-position: top;
+  object-position: top;
   width: 100%;
 }
 .catalog__content {
