@@ -343,7 +343,7 @@ button.btn {
 .header__logo a,
 .header__logo a img {
   height: 100%;
-  width: 100%;
+  width: auto;
 }
 @media (max-width: 920px) {
   .header__logo {
@@ -355,7 +355,7 @@ button.btn {
   .header__logo a,
   .header__logo a img {
     height: 100%;
-    width: 100%;
+    width: auto;
   }
 }
 .header__buttons,
